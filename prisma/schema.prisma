@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Order {
+  id               String   @id
+  fromCurrency     String
+  toCurrency       String
+  amount           String
+  rate             String
+  rateType         String
+  depositAddress   String
+  recipientAddress String
+  status           String
+  createdAt        DateTime @default(now())
+  receiveAmount    String?
+  txHash           String?
+  completedAt      DateTime?
+  failureReason    String?
+
+  @@index([depositAddress])
+  @@index([status])
+}
+
+model Deposit {
+  address  String  @id
+  currency String
+  isUsed   Boolean @default(false)
+  orderId  String?
+
+  @@index([currency])
+  @@index([isUsed])
+}
+
+model Rate {
+  pair      String   @id
+  rate      String
+  lastUpdate DateTime
+  change24h  Float
+  volume24h  Float
+
+  @@index([pair])
+}
+
+model Reserve {
+  currency   String   @id
+  amount     String
+  lastUpdate DateTime
+}

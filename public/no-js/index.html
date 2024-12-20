@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CryptoSwap - Automatic Cryptocurrency Exchange</title>
+    <link rel="stylesheet" href="/src/index.css">
+  </head>
+  <body class="bg-[#1a1d24] text-white">
+    <header class="bg-[#22262e] border-b border-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <div class="flex items-center">
+            <span class="ml-2 text-xl font-bold">CryptoSwap</span>
+          </div>
+          <nav class="flex items-center gap-6">
+            <a href="/no-js/index.html" class="text-sm text-blue-400">Home</a>
+            <a href="/no-js/faq.html" class="text-sm text-gray-400 hover:text-blue-400">FAQ</a>
+            <a href="/no-js/support.html" class="text-sm text-gray-400 hover:text-blue-400">Support</a>
+            <a href="/" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 transition-colors">
+              <span class="text-sm">No-JS Mode <span class="text-green-400">On</span></span>
+            </a>
+          </nav>
+        </div>
+      </div>
+      <div class="bg-blue-500/10 py-2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between items-center gap-6">
+            <div class="flex items-center gap-3 text-sm">
+              <span>No registration required</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <span>No hidden fees</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <span>Instant exchanges</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <span>Best rates guaranteed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <div class="bg-[#22262e] rounded-lg p-6 border border-gray-800">
+        <h2 class="text-xl font-bold mb-6">Automatic Cryptocurrency Exchange</h2>
+        <form action="/no-js/api/index.php" method="POST" class="space-y-6">
+          <input type="hidden" name="action" value="create_order">
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-2">
+              <label class="block text-sm text-gray-400">From currency</label>
+              <select name="fromCurrency" id="fromCurrency" class="w-full bg-[#2c313c] border border-gray-700 rounded-lg p-3 text-white" required>
+                <option value="BTC">BTC</option>
+                <option value="XMR">XMR</option>
+                <option value="LTC">LTC</option>
+              </select>
+            </div>
+            
+            <div class="space-y-2">
+              <label class="block text-sm text-gray-400">Amount</label>
+              <input
+                type="number"
+                name="amount"
+                placeholder="Enter amount"
+                class="w-full bg-[#2c313c] border border-gray-700 rounded-lg p-3 text-white"
+                required
+                min="0"
+                step="any"
+              />
+            </div>
+          </div>
+
+          <div class="flex justify-center">
+            <button
+              type="button"
+              onclick="swapCurrencies()"
+              class="p-2 rounded-full bg-blue-500/10 hover:bg-blue-500/20 transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400">
+                <path d="m17 3-5 5-5-5"/>
+                <path d="m17 21-5-5-5 5"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-2">
+              <label class="block text-sm text-gray-400">To currency</label>
+              <select name="toCurrency" id="toCurrency" class="w-full bg-[#2c313c] border border-gray-700 rounded-lg p-3 text-white" required>
+                <option value="XMR">XMR</option>
+                <option value="BTC">BTC</option>
+                <option value="LTC">LTC</option>
+              </select>
+            </div>
+            
+            <div class="space-y-2">
+              <label class="block text-sm text-gray-400">Your receiving address</label>
+              <input
+                type="text"
+                name="recipientAddress"
+                placeholder="Enter receiving address"
+                class="w-full bg-[#2c313c] border border-gray-700 rounded-lg p-3 text-white font-mono"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <label class="flex-1 bg-[#2c313c] p-4 rounded-lg cursor-pointer">
+              <input type="radio" name="rateType" value="fixed" checked />
+              <span class="ml-2">Fixed rate (1.5%)</span>
+            </label>
+            <label class="flex-1 bg-[#2c313c] p-4 rounded-lg cursor-pointer">
+              <input type="radio" name="rateType" value="dynamic" />
+              <span class="ml-2">Dynamic rate (1%)</span>
+            </label>
+          </div>
+
+          <button 
+            type="submit"
+            class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 px-4 rounded-lg transition-colors"
+          >
+            Create Order
+          </button>
+        </form>
+      </div>
+
+      <div class="bg-[#22262e] rounded-lg p-6 border border-gray-800">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-bold">Current Exchange Rates</h2>
+          <form method="GET">
+            <button 
+              type="submit"
+              class="flex items-center gap-2 px-3 py-1 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 transition-colors"
+            >
+              <span class="text-sm">Refresh Rates</span>
+            </button>
+          </form>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr class="text-sm text-gray-400 border-b border-gray-800">
+                <th class="py-3 text-left">Trading Pair</th>
+                <th class="py-3 text-right">Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-gray-800">
+                <td class="py-4">BTC/XMR</td>
+                <td class="py-4 text-right font-mono">146.15789</td>
+              </tr>
+              <tr class="border-b border-gray-800">
+                <td class="py-4">XMR/BTC</td>
+                <td class="py-4 text-right font-mono">0.00684200</td>
+              </tr>
+              <tr class="border-b border-gray-800">
+                <td class="py-4">BTC/LTC</td>
+                <td class="py-4 text-right font-mono">281.42857</td>
+              </tr>
+              <tr class="border-b border-gray-800">
+                <td class="py-4">LTC/BTC</td>
+                <td class="py-4 text-right font-mono">0.00355333</td>
+              </tr>
+              <tr class="border-b border-gray-800">
+                <td class="py-4">XMR/LTC</td>
+                <td class="py-4 text-right font-mono">1.92500</td>
+              </tr>
+              <tr class="border-b border-gray-800">
+                <td class="py-4">LTC/XMR</td>
+                <td class="py-4 text-right font-mono">0.51948</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="bg-[#22262e] rounded-lg p-6 border border-gray-800">
+        <h2 class="text-xl font-bold mb-4">Exchange Reserves</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-[#2c313c] p-4 rounded-lg border border-gray-700">
+            <div class="text-sm text-gray-400 mb-1">BTC Reserve</div>
+            <div class="text-lg font-mono">119.51342552</div>
+          </div>
+          <div class="bg-[#2c313c] p-4 rounded-lg border border-gray-700">
+            <div class="text-sm text-gray-400 mb-1">XMR Reserve</div>
+            <div class="text-lg font-mono">4320.25362471</div>
+          </div>
+          <div class="bg-[#2c313c] p-4 rounded-lg border border-gray-700">
+            <div class="text-sm text-gray-400 mb-1">LTC Reserve</div>
+            <div class="text-lg font-mono">757.81817851</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function swapCurrencies() {
+        const fromSelect = document.getElementById('fromCurrency');
+        const toSelect = document.getElementById('toCurrency');
+        const fromValue = fromSelect.value;
+        fromSelect.value = toSelect.value;
+        toSelect.value = fromValue;
+      }
+    </script>
+  </body>
+</html>

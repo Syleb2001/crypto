@@ -1,0 +1,76 @@
+{
+  "orders": {
+    "ce608c7e-ddaa-41b1-90c0-84609d0c0996": {
+      "id": "ce608c7e-ddaa-41b1-90c0-84609d0c0996",
+      "fromCurrency": "XMR",
+      "toCurrency": "BTC",
+      "amount": "1",
+      "rate": "0.00228700",
+      "rateType": "fixed",
+      "recipientAddress": "bc1qpy88ckl295zlqxelvh7xmqn8u7wu39nqlzt50j",
+      "createdAt": "2024-11-30T22:25:39.036Z",
+      "status": "awaiting_payment"
+    }
+  },
+  "rates": [
+    {
+      "pair": "XMR/BTC",
+      "rate": "0.00684200",
+      "lastUpdate": "2024-11-27T20:51:01.466Z",
+      "change24h": 2.5,
+      "volume24h": 156.23
+    },
+    {
+      "pair": "BTC/XMR",
+      "rate": "146.15789",
+      "lastUpdate": "2024-11-27T20:51:01.466Z",
+      "change24h": -1.2,
+      "volume24h": 892.45
+    },
+    {
+      "pair": "LTC/BTC",
+      "rate": "0.00355333",
+      "lastUpdate": "2024-11-27T20:51:01.466Z",
+      "change24h": -0.5,
+      "volume24h": 445.67
+    },
+    {
+      "pair": "BTC/LTC",
+      "rate": "281.42857",
+      "lastUpdate": "2024-11-27T20:51:01.466Z",
+      "change24h": 0.8,
+      "volume24h": 723.12
+    },
+    {
+      "pair": "XMR/LTC",
+      "rate": "1.92500",
+      "lastUpdate": "2024-11-27T20:51:01.466Z",
+      "change24h": 1.7,
+      "volume24h": 234.56
+    },
+    {
+      "pair": "LTC/XMR",
+      "rate": "0.51948",
+      "lastUpdate": "2024-11-27T20:51:01.466Z",
+      "change24h": -1.5,
+      "volume24h": 178.9
+    }
+  ],
+  "reserves": [
+    {
+      "currency": "BTC",
+      "amount": "119.51342552",
+      "lastUpdate": "2024-11-27T20:51:01.466Z"
+    },
+    {
+      "currency": "XMR",
+      "amount": "4320.25362471",
+      "lastUpdate": "2024-11-27T20:51:01.466Z"
+    },
+    {
+      "currency": "LTC",
+      "amount": "757.81817851",
+      "lastUpdate": "2024-11-27T20:51:01.466Z"
+    }
+  ]
+}
